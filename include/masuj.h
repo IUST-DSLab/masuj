@@ -15,6 +15,8 @@ struct MainJob
 
 	/**
 	 * Repeats: spawns the subsidiary jobs then waits for synchronization.
+	 * The spawn stage, uses scheduler to dispatch subsidiary jobs to available resources (job scheduler employs various
+	 * scheduling policies).
 	 * */
 	bool (*func)(unsigned char* data, size_t size, unsigned char* res, size_t res_size);
 };
