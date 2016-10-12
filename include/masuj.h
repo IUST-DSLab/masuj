@@ -7,6 +7,10 @@ class SubJob;
 
 class MainJob
 {
+public:
+	MainJob();
+	~MainJob();
+
 	unsigned long long id;
 
 	unsigned long long sub_jobs_id[MAX_SUB_JOBS];
@@ -23,6 +27,10 @@ class MainJob
 
 class SubJob
 {
+public:
+	SubJob();
+	~SubJob();
+
 	unsigned long long id;
 
 	unsigned long long main_job_id;
@@ -36,6 +44,10 @@ class SubJob
 
 class Job
 {
+public:
+	Job();
+	~Job();
+
 	MainJob* main_job;
 	SubJob* sub_jobs[MAX_SUB_JOBS];
 	size_t number_of_sub_jobs;
