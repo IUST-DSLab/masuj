@@ -3,14 +3,14 @@
 
 #define MAX_SUB_JOBS 16
 
-struct SubJob;
+class SubJob;
 
-struct MainJob
+class MainJob
 {
 	unsigned long long id;
 
 	unsigned long long sub_jobs_id[MAX_SUB_JOBS];
-	struct SubJob* sub_jobs;
+	SubJob* sub_jobs;
 	size_t number_of_sub_jobs;
 
 	/**
@@ -21,12 +21,12 @@ struct MainJob
 	bool (*func)(unsigned char* data, size_t size, unsigned char* res, size_t res_size);
 };
 
-struct SubJob
+class SubJob
 {
 	unsigned long long id;
 
 	unsigned long long main_job_id;
-	struct MainJob* main_job;
+	MainJob* main_job;
 
 	/**
 	 * Executes a round of CPU-intensive computation.
@@ -34,10 +34,10 @@ struct SubJob
 	bool (*func)(unsigned char* data, size_t size, unsigned char* res, size_t res_size);
 }
 
-struct Job
+class Job
 {
-	struct MainJob* main_job;
-	struct SubJob* sub_jobs[MAX_SUB_JOBS];
+	MainJob* main_job;
+	SubJob* sub_jobs[MAX_SUB_JOBS];
 	size_t number_of_sub_jobs;
 };
 
